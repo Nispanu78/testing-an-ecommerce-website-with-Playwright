@@ -15,7 +15,7 @@ export const test = base.extend<{ adminAuthPage: Page }>({
       process.env.ADMIN_EMAIL!,
       process.env.ADMIN_PASSWORD!
     );
-    await expect(loginPage.navMenuSignIn).toBeHidden();
+    await expect(loginPage.navMenu).toContainText("John Doe");
 
     await setupContext.storageState({ path: storageStatePath });
     await setupContext.close();
