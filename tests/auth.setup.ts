@@ -38,18 +38,6 @@ setup("Create Customer 1 Authentication", async ({ page, context }) => {
   // Encapsulated in the LoginPage object to hide low-level input/fill/click steps
   await loginPage.login(email, password);
 
-  /**
- * ⬇️ CRITICAL ADDITION
- * Wait until the backend confirms the user is authenticated.
- * This guarantees the auth token/cookie is attached and usable.
- */
-  await page.waitForResponse(
-    (response) =>
-      response.url().includes("/users/me") &&
-      response.status() === 200,
-    { timeout: 15000 }
-  );
-
   // Verify login was successful
   // Playwright assertions auto-wait until the condition is met or timeout occurs
   await expect(loginPage.navMenu).toContainText("Jane Doe");
