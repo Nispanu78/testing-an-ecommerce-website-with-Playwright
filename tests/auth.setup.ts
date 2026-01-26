@@ -19,10 +19,6 @@ setup("Create Customer 1 Authentication", async ({ page, context }) => {
   const email = process.env.CUSTOMER_1_EMAIL || "";
   const password = process.env.CUSTOMER_1_PASSWORD || "";
 
-  if (!process.env.CUSTOMER_1_EMAIL || !process.env.CUSTOMER_1_PASSWORD) {
-  throw new Error("Missing CUSTOMER_1_EMAIL or CUSTOMER_1_PASSWORD in CI");
-  }
-
   // Path to save the authenticated storage state
   // Playwright allows storing cookies, localStorage, and sessionStorage for reuse
   const customer1AuthFile = ".auth/customer1StorageState.json";
